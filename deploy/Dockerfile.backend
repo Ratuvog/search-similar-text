@@ -13,4 +13,6 @@ RUN pip install --no-cache-dir https://github.com/explosion/spacy-models/release
 
 WORKDIR /app
 
+RUN export FLASK_APP=src/app.py flask db upgrade
+
 CMD ["gunicorn", "-c", "gunicorn.conf.py", "wsgi:app"]
